@@ -4,6 +4,8 @@ const speechBubble = document.getElementById("speech-bubble");
 const giftButton = document.getElementById("gift-button");
 const giftBox = document.getElementById("gift-box");
 
+let clickCount = 0;
+
 const messages = [
   "Ur doing amazing 💖 ",
   "Embe siu nhân 🦸‍♂️",
@@ -16,8 +18,16 @@ const gifts = [
 ];
 
 plush.addEventListener("click", () => {
-  const msg = messages[Math.floor(Math.random() * messages.length)];
-  speechBubble.textContent = msg;
+  clickCount++;
+
+  if (clickCount === 1) {
+    plush.src = "plush-naked.png"; 
+    speechBubble.textContent = "Vãi sao làm vậy với nhỏ??";
+  } else {
+    plush.src = "plush.png"; // revert to original image
+    const msg = messages[Math.floor(Math.random() * messages.length)];
+    speechBubble.textContent = msg;
+  }
 });
 
 giftButton.addEventListener("click", () => {
